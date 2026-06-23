@@ -57,9 +57,10 @@ body {
   border-radius: 8px;
 }
 
-.envelope.open .letter {
-  transform: translateY(-80px);
+..envelope.open .letter {
+  transform: translateY(-220px);
   opacity: 1;
+}
 }
 
 .envelope.open {
@@ -71,4 +72,14 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
+}.letter{
+  z-index: 10;
+}
+
+.flap{
+  z-index: 1;
+}
+
+.body{
+  z-index: 2;
 }

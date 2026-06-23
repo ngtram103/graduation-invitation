@@ -1,0 +1,158 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thư Tình Animation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:linear-gradient(to bottom,#fff5f8,#ffeef4);
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:serif;
+}
+
+/* Hoa rơi */
+.flower{
+    position:fixed;
+    top:-20px;
+    font-size:20px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* Lấp lánh */
+.sparkle{
+    position:fixed;
+    color:#fff;
+    animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:0.2;}
+    50%{opacity:1;}
+}
+
+/* Phong bì */
+.envelope{
+    width:280px;
+    height:180px;
+    background:#f8bfcf;
+    position:relative;
+    cursor:pointer;
+    border-radius:10px;
+    transition:.5s;
+}
+
+.envelope:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    clip-path:polygon(0 0,50% 50%,100% 0);
+    background:#f5a7be;
+}
+
+.paper{
+    position:absolute;
+    left:15px;
+    top:20px;
+    width:250px;
+    height:140px;
+    background:#fffdf7;
+    padding:20px;
+    text-align:center;
+    transform-origin:top;
+    transform:scaleY(0);
+    transition:1s;
+    border-radius:8px;
+}
+
+.paper h2{
+    margin-bottom:10px;
+}
+
+.open .paper{
+    transform:scaleY(1);
+}
+
+/* Cuộn giấy */
+.scroll{
+    animation:unroll 1.5s ease forwards;
+}
+
+@keyframes unroll{
+    0%{
+        transform:scaleY(0);
+    }
+    100%{
+        transform:scaleY(1);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" id="letter">
+    <div class="paper scroll">
+        <h2>💌 Gửi Anh</h2>
+        <p>
+            Cảm ơn vì đã xuất hiện trong cuộc đời em.
+            Mong rằng chúng ta sẽ còn nhiều điều đẹp phía trước.
+        </p>
+    </div>
+</div>
+
+<script>
+const letter = document.getElementById("letter");
+
+letter.addEventListener("click",()=>{
+    letter.classList.toggle("open");
+});
+
+// Hoa rơi
+for(let i=0;i<20;i++){
+    let flower=document.createElement("div");
+    flower.className="flower";
+    flower.innerHTML="🌸";
+    flower.style.left=Math.random()*100+"vw";
+    flower.style.animationDuration=(5+Math.random()*5)+"s";
+    flower.style.opacity=Math.random();
+    document.body.appendChild(flower);
+}
+
+// Lấp lánh
+for(let i=0;i<40;i++){
+    let star=document.createElement("div");
+    star.className="sparkle";
+    star.innerHTML="✨";
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+    star.style.fontSize=(10+Math.random()*20)+"px";
+    star.style.animationDelay=Math.random()*2+"s";
+    document.body.appendChild(star);
+}
+</script>
+
+</body>
+</html>
+```
