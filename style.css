@@ -1,98 +1,74 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffe6e6, #fff5cc);
+  font-family: Arial;
+  overflow: hidden;
 }
 
-body{
-    background:#f7f2ea;
-    font-family:Georgia,serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+.scene {
+  perspective: 1000px;
 }
 
-.scroll-container{
-    text-align:center;
+.envelope {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: 1s;
 }
 
-.scroll{
-    cursor:pointer;
-    transition:0.5s;
+.body {
+  width: 100%;
+  height: 100%;
+  background: #ff6b81;
+  position: absolute;
+  bottom: 0;
+  border-radius: 10px;
 }
 
-.paper{
-    width:280px;
-    padding:30px;
-    background:#fff8eb;
-    border:3px solid #c9a24b;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
+.flap {
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 120px solid #ff4757;
+  position: absolute;
+  top: -120px;
 }
 
-.paper h2{
-    font-size:50px;
+.letter {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  background: white;
+  top: 5%;
+  left: 5%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: 1s;
+  border-radius: 8px;
 }
 
-.paper p{
-    margin-top:10px;
-    color:#0b2a5a;
+.envelope.open .letter {
+  transform: translateY(-80px);
+  opacity: 1;
 }
 
-.hidden{
-    display:none;
+.envelope.open {
+  transform: rotateX(20deg);
 }
 
-.invitation{
-    width:500px;
-    background:#fffdf8;
-    padding:40px;
-    border:3px solid #c9a24b;
-    border-radius:18px;
-    box-shadow:0 20px 40px rgba(0,0,0,.2);
-    animation:fade .8s;
-}
-
-.invitation h1{
-    color:#c29a39;
-    margin-bottom:20px;
-}
-
-.invitation h2{
-    color:#0b2a5a;
-    margin-bottom:20px;
-}
-
-.invitation p{
-    margin:15px 0;
-    line-height:1.7;
-}
-
-.message{
-    margin-top:25px;
-    font-style:italic;
-}
-
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:scale(.8);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}.scroll-img{
-    width:220px;
-    transition:0.5s;
-}
-
-.scroll-img:hover{
-    transform:scale(1.05);
-}.chibi{
-    width:180px;
-    display:block;
-    margin:20px auto;
+/* pháo hoa */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
 }
